@@ -21,7 +21,7 @@ General use:
 * Import GDS files from HFSS, Cadence or create your own GDS elements/structures 
 * Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc ([List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
 * plot and visualize the designs in Matlab before exporting. 
-* Assign layer and data type numbers to your elements - layer mapping. 
+* Assign layer and datatype numbers to your elements - layer mapping. 
 * Rename your structures and gds libraries or change properties. 
 * Export GDS files.
 * Check also [gdsii-toolbox](https://github.com/ulfgri/gdsii-toolbox). 
@@ -34,15 +34,15 @@ Specific use:
 * Fill empty spaces in your design by any basic grid block you want so that it can pass density requirements in DRC. Otherwise, leave it open for auto generated fillings in Cadence later on. 
 
 ## Examples
-I added my latest project [codes](https://github.com/zainkhalifa/GDS_Processing/tree/master/Procedure%20Codes) as a demo. I cannot add all details and `gds` files. However, you can see the procedure flow and the corrosponding images in [GDS_Processing.pdf](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Processing.pdf) file. 
+I included my latest project [codes](https://github.com/zainkhalifa/GDS_Processing/tree/master/Procedure%20Codes) as a demo. I cannot include full details nor `GDS` files. However, you can see the procedure flow and corrosponding images in [GDS_Processing.pdf](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Processing.pdf) file. 
 
 ## List of functions
 [List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m).
 
 ## Notes
-* Some of my functions can lose the layer and data type numbers so keep that in mind and it is a good practice to call `GDS_reset` to remap.
-* Most functions deal with boundry data type only. 
-* Some of my functions do not deal with elements with more then one boundry. 
-* Call `help` for details about the functions and needed i/o. check my codes for how to use them. 
+* Some of my functions can lose the identifier values for `layer number` and `datatype` number. It is a good practice to call `GDS_reset` to remap before exporting.
+* Most functions deal with *boundry* data type only rather than *path*, *text* or others. 
+* Some of my functions do not deal with elements that have more than one *boundry*. 
+* Call `help` for details about the functions. Check out my codes for how to use them. 
 * I kept the [Graveyard](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/The%20Graveyard.zip) which contains my previous and failed codes. It can help if you want to develop new codes. 
-* I did not optimise the codes for fastist simulation time but I prioritize useability since I dont have very complicated desings. 
+* I did not optimise the codes for the fastest simulation time but I prioritize usability since I dont have very complicated desings. 
