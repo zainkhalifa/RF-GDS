@@ -19,11 +19,12 @@ Set path in Matlab to `include all subfolders` in your location of the library. 
 ## What can you do with this library
 General use:
 * Import GDS files from HFSS, Cadence or create your own GDS elements/structures 
-* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc([List of fucntions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
+* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc ([List of fucntions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
 * plot and visualize the designs in Matlab before exporting. 
 * Assign layer and data type numbers to your elements - layer mapping. 
 * Rename your structures and gds libraries or change properties. 
 * Export GDS files.
+* Check also [gdsii-toolbox](https://github.com/ulfgri/gdsii-toolbox). 
 
 Specific use:
 * Disretize a structure so that all vertices fits in the minimum assigned grid for your technology (minGrid). 
@@ -31,5 +32,16 @@ Specific use:
 * Fix/Distort your structures for minimum width and minimum spacing as needed. This works for RF passives since minor chanages won't affect the EM performance of the design if your features are much les than your minimum wavelength. 
 * Generate vias between metals so that they are all between your metal structures. 
 * Fill empty spaces in your design by any basic grid block you want so that it can pass density requirements in DRC or leave it open for auto generated fillings in Cadence later on. 
-* 
-*
+
+## Examples
+I added my latest project [codes](https://github.com/zainkhalifa/GDS_Processing/tree/master/Procedure%20Codes) as a demo. I cannot add all details and gds files. However, you can see the flow for the codes and images in [GDS_Processing.pdf file](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Processing.pdf). 
+
+## List of functions
+([List of fucntions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
+
+## Caution
+* Some of my functions can distroy the layer and data type numbers so keep that in mind and it is a good practice to call ``GDS_reset`` to remap.
+* Some of my functions do not deal with elements with more then one boundry. 
+* Call ``help`` for details about the functions and needed i/o. check my codes for how to use them. 
+* I kept the [Graveyard](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/The%20Graveyard.zip) which contains my previous and failed codes. It can help if you want to develop new codes. 
+* I did not optimise the codes for fastist simulation time but I prioritize useability since I dont have very complicated desings. 
