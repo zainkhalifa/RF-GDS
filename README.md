@@ -18,11 +18,11 @@ Set path in Matlab to `include all subfolders` in your location of the library. 
 General use:
 * Import GDS files from HFSS, Cadence or create your own GDS elements. 
 * Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff).
-*. Assign layer and data type numbers to your elements and map your layers. 
-*. Rename your structures and gds libraries or change properties. 
-*. Export GDS files
+* Assign layer and data type numbers to your elements and map your layers. 
+* Rename your structures and gds libraries or change properties. 
+* Export GDS files
 Specific use:
-*. Disretize a structure so that it all fits in the minimum assigned grid for your technology. 
-*. Make all transitions with horixzontal and vertical angles to comply with DRC of your technology. 
-*. Fix/Distort your structures for minimum width and minimum spacing as needed. This worked for RF passives since minor chnages wont affect the EM performance of the design. 
-*. 
+* Disretize a structure so that it all fits in the minimum assigned grid for your technology. 
+* Make all transitions with horixzontal and vertical angles to comply with DRC of your technology. 
+* Fix/Distort your structures for minimum width and minimum spacing as needed. This worked for RF passives since minor chnages wont affect the EM performance of the design. 
+*
