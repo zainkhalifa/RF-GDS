@@ -7,12 +7,12 @@ Disclaimer: The library is not professionally written. I wrote it along the way 
 
 ## How to use
 Clone or downlaod the library.
-On Windows MATLAB, 
+### On Windows MATLAB, 
 1. install mex compiler by running the file `mingw.mlpkginstall` [here](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/mingw.mlpkginstall) or google it for other methods if you dont have that file.
 2. Set path in Matlab to `include all subfolders` in your location of the library. You can do that from `HOME --> Set Path`.
 3. Compile the library by running ``makemex.m`` [here](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/gdsii-toolbox-master/makemex.m). You need to do this only once. 
 
-On Linux MATLAB,
+### On Linux MATLAB,
 
 Set path in Matlab to `include all subfolders` in your location of the library. You can do that from `HOME --> Set Path`.
 
