@@ -19,7 +19,7 @@ Set path in Matlab to `include all subfolders` in your location of the library. 
 ## What can you do with this library
 General use:
 * Import GDS files from HFSS, Cadence or create your own GDS elements/structures 
-* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc ([List of fucntions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
+* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc ([List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
 * plot and visualize the designs in Matlab before exporting. 
 * Assign layer and data type numbers to your elements - layer mapping. 
 * Rename your structures and gds libraries or change properties. 
@@ -37,7 +37,7 @@ Specific use:
 I added my latest project [codes](https://github.com/zainkhalifa/GDS_Processing/tree/master/Procedure%20Codes) as a demo. I cannot add all details and gds files. However, you can see the flow for the codes and images in [GDS_Processing.pdf file](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Processing.pdf). 
 
 ## List of functions
-([List of fucntions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
+[List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m).
 
 ## Caution
 * Some of my functions can distroy the layer and data type numbers so keep that in mind and it is a good practice to call ``GDS_reset`` to remap.
