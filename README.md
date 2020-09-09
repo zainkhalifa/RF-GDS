@@ -19,7 +19,7 @@ Set path in Matlab to `include all subfolders` in your location of the library. 
 ## What can you do with this library
 General use:
 * Import GDS files from HFSS, Cadence or create your own GDS elements/structures 
-* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc.
+* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc([List of fucntions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
 * plot and visualize the designs in Matlab before exporting. 
 * Assign layer and data type numbers to your elements - layer mapping. 
 * Rename your structures and gds libraries or change properties. 
