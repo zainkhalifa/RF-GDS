@@ -25,9 +25,9 @@ figure,GDS_plot(in_glib(1),'-')
 % GDS_minWidth_gstr does blind correct for miWidth so it needs to be called
 % more than once !
 DSt = GDS_Discretize_gstr(St,20,units);
-WSt = GDS_minWidth_gstr(DSt,600,20,2000,units);
-WSt = GDS_minWidth_gstr(WSt,600,20,2000,units);
-WSt = GDS_minWidth_gstr(WSt,600,20,2000,units);
+WSt = GDS_minWidth_gstr(DSt,700,20,2000,units);
+WSt = GDS_minWidth_gstr(WSt,700,20,2000,units);
+WSt = GDS_minWidth_gstr(WSt,700,20,2000,units);
 
 figure,GDS_plot(WSt,'-')
 
