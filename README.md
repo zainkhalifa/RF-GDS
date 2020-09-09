@@ -39,7 +39,7 @@ I added my latest project [codes](https://github.com/zainkhalifa/GDS_Processing/
 ## List of functions
 [List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m).
 
-## Caution
+## Notes
 * Some of my functions can lose the layer and data type numbers so keep that in mind and it is a good practice to call `GDS_reset` to remap.
 * Most functions deal with boundry data type only. 
 * Some of my functions do not deal with elements with more then one boundry. 
