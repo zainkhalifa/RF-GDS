@@ -12,7 +12,8 @@ On Windows MATLAB,
 2. Set path in Matlab to `include all subfolders` in your location of the library. You can do that from `HOME --> Set Path`.
 3. Compile the library by running ``makemex.m`` [here](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/gdsii-toolbox-master/makemex.m). You need to do this only once. 
 
-On Linux MATLAB, 
+On Linux MATLAB,
+
 Set path in Matlab to `include all subfolders` in your location of the library. You can do that from `HOME --> Set Path`.
 
 ## What can you do with this library
