@@ -1,5 +1,5 @@
-# GDS Processing
-GDS Processing is a MATLAB library to enable RF analog integrated-circuit designers to convert and manipulate GDS structures and then export them to Cadence layout without DRC errors. I needed a tool during my PhD to move designs from HFSS to Cadence layout without drawing the designs manually again in Cadence. Refere to the [GDS_Processing.pdf file](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Processing.pdf) for a quick overview. Although, I made this library for this specific application, I have created many general functions for GDS files that you might find useful. 
+# RF-GDS
+RF-GDS is a MATLAB library to enable RF analog integrated-circuit designers to convert and manipulate GDS structures and then export them to Cadence layout without DRC errors. I needed a tool during my PhD to move designs from HFSS to Cadence layout without drawing the designs manually again in Cadence. Refere to the [RF-GDS.pdf file](https://github.com/zainkhalifa/RF-GDS/blob/master/RF-GDS.pdf) for a quick overview. Although, I made this library for this specific application, I have created many general functions for GDS files that you might find useful. 
 
 Note: This library depends on the work of Ulf Griesmann in his [gdsii-toolbox](https://github.com/ulfgri/gdsii-toolbox). This repository includes his source code together with any copyright notice therein. 
 
@@ -8,9 +8,9 @@ Disclaimer: The library is not professionally written. I wrote it along the way 
 ## How to use
 Clone or download the library.
 ### On Windows MATLAB, 
-1. Install mex compiler by running the file `mingw.mlpkginstall` [here](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/mingw.mlpkginstall) or google it for other methods if you dont have that file.
+1. Install mex compiler by running the file `mingw.mlpkginstall` [here](https://github.com/zainkhalifa/RF-GDS/blob/master/GDS_Lib/mingw.mlpkginstall) or google it for other methods if you dont have that file.
 2. Set path in Matlab to `include all subfolders` in your location of the library. You can do that from `HOME --> Set Path`.
-3. Compile the library by running `makemex.m` [here](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/gdsii-toolbox-master/makemex.m). You need to do this only once. 
+3. Compile the library by running `makemex.m` [here](https://github.com/zainkhalifa/RF-GDS/blob/master/GDS_Lib/gdsii-toolbox-master/makemex.m). You need to do this only once. 
 
 ### On Linux MATLAB,
 
@@ -19,7 +19,7 @@ Set path in Matlab to `include all subfolders` in your location of the library. 
 ## What you can do with this library
 General use:
 * Import GDS files from HFSS, Cadence or create your own GDS elements/structures 
-* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc ([List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
+* Perform operations such as Merge, Split, Mosaic, find intersections, Math operations (and, or, diff)...etc ([List of functions](https://github.com/zainkhalifa/RF-GDS/blob/master/GDS_Lib/GDS_Functions/Contents.m)).
 * plot and visualize the designs in Matlab before exporting. 
 * Assign layer and datatype numbers to your elements - layer mapping. 
 * Rename your structures and gds libraries or change properties. 
@@ -34,7 +34,7 @@ Specific use:
 * Fill empty spaces in your design by any basic grid block you want so that it can pass density requirements in DRC. Otherwise, leave it open for auto generated fillings in Cadence later on. 
 
 ## Examples
-I included my latest project [codes](https://github.com/zainkhalifa/GDS_Processing/tree/master/Procedure%20Codes) as a demo. I cannot include full details nor `GDS` files. However, you can see the procedure flow and corrosponding images in [GDS_Processing.pdf](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Processing.pdf) file. 
+I included my latest project [codes](https://github.com/zainkhalifa/RF-GDS/tree/master/Procedure%20Codes) as a demo. I cannot include full details nor `GDS` files. However, you can see the procedure flow and corrosponding images in [RF-GDS.pdf](https://github.com/zainkhalifa/RF-GDS/blob/master/RF-GDS.pdf) file. 
 
 ## List of functions
 [List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m).
