@@ -37,12 +37,12 @@ Specific use:
 I included my latest project [codes](https://github.com/zainkhalifa/RF-GDS/tree/master/Procedure%20Codes) as a demo. I cannot include full details nor `GDS` files. However, you can see the procedure flow and corrosponding images in [RF-GDS.pdf](https://github.com/zainkhalifa/RF-GDS/blob/master/RF-GDS.pdf) file. 
 
 ## List of functions
-[List of functions](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/Contents.m).
+[List of functions](https://github.com/zainkhalifa/RF-GDS/blob/master/GDS_Lib/GDS_Functions/Contents.m).
 
 ## Notes
 * Some of my functions can lose the identifier values for `layer number` and `datatype` number. It is a good practice to call `GDS_reset` to remap before exporting.
 * Most functions deal with *boundry* data type only rather than *path*, *text* or others. 
 * Some of my functions do not deal with elements that have more than one *boundry*. 
 * Call `help` for details about the functions. Check out my codes for how to use them. 
-* I kept the [Graveyard](https://github.com/zainkhalifa/GDS_Processing/blob/master/GDS_Lib/GDS_Functions/The%20Graveyard.zip) which contains my previous and failed codes. It can help if you want to develop new codes. 
+* I kept the [Graveyard](https://github.com/zainkhalifa/RF-GDS/blob/master/GDS_Lib/GDS_Functions/The%20Graveyard.zip) which contains my previous and failed codes. It can help if you want to develop new codes. 
 * I did not optimise the codes for the fastest simulation time but I prioritize usability since I dont have very complicated desings. 
