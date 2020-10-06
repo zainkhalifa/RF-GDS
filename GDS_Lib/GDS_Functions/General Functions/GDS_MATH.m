@@ -40,10 +40,19 @@ function [ogstr] = GDS_MATH(ig1,ig2,operation,units)
         ig2 = igstr2{cidx2};
         for  eidx1 = 1:length(ig1(:))
         for  eidx2 = 1:length(ig2(:))
-            [pc,hf] = poly_boolmex(xy(ig1(eidx1)),xy(ig2(eidx2)),operation,units);
+            %
+            XY1 = cell2mat(xy(ig1(eidx1))).*(units);
+            XY2 = cell2mat(xy(ig2(eidx2))).*(units);
+            %
+%             [pc,hf] = poly_boolmex(xy(ig1(eidx1)),xy(ig2(eidx2)),operation,units);
+            [pc,hf] = poly_boolmex({XY1},{XY2},operation,units);
             for idx = 1:length(pc) % fill the output gelm in one gstr
                 XY = cell2mat(pc(idx));
                 XY(end+1,:) = XY(1,:);
+                % 
+                XY = XY./(units);
+                XY = round(XY*200)./200;
+                %
                 ogstr(1+end) = gds_element('boundary','xy',XY);
             end
             if any(hf)

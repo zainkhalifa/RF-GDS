@@ -6,7 +6,7 @@ function [ogstr] = GDS_Mosaic_intersections(igds,Mosaic_gstr,units)
 % Currently, Mosaic_gstr is considered as square grids and I dont know what
 % will happen if it was complex cells of structures. 
 %
-% Author : Zainulabideen Khalifa            Last Revision : 09/08/2020
+% Author : Zainulabideen Khalifa            Last Revision : 10/04/2020
 %
 % function [ogstr] = GDS_Mosaic_intersections(igstr,Mosaic_gstr,units)
 
@@ -35,23 +35,38 @@ fprintf("Running GDS_Mosaic_intersections...\n");
     
     ogstr_in = gds_structure('MATLAB');
     ogstr_out = gds_structure('MATLAB');
-
-    for e_idx2 = 1:length(igstr(:))
+        
+     IDX = 1:length(Mosaic_gstr(:));
+     for e_idx2 = 1:length(igstr(:))
         for e_idx1 = 1:length(Mosaic_gstr(:))
             gstr = GDS_MATH(Mosaic_gstr(e_idx1),igstr(e_idx2),'and',units);
-            if (length(gstr(:))~=0)       
+            if (length(gstr(:))~=0)
                 ogstr_in(1+end) = Mosaic_gstr(e_idx1);
-            else
-                ogstr_out(1+end) = Mosaic_gstr(e_idx1);
+                IDX(find(IDX == e_idx1)) = [];
             end
         end
         fprintf("Processing element#%0.0f in the input structure\n",e_idx2);
-    end
+     end
+     
+     for idx = 1:length(IDX)
+         ogstr_out(idx) = Mosaic_gstr(IDX(idx));
+     end
     ogstr = {ogstr_in ogstr_out};
     fprintf("DONE!\n");
 
 end
-
+% 
+%     for e_idx2 = 1:length(igstr(:))
+%         for e_idx1 = 1:length(Mosaic_gstr(:))
+%             gstr = GDS_MATH(Mosaic_gstr(e_idx1),igstr(e_idx2),'and',units);
+%             if (length(gstr(:))~=0)       
+%                 ogstr_in(1+end) = Mosaic_gstr(e_idx1);
+%             else
+%                 ogstr_out(1+end) = Mosaic_gstr(e_idx1);
+%             end
+%         end
+%         fprintf("Processing element#%0.0f in the input structure\n",e_idx2);
+%     end
 
 
 

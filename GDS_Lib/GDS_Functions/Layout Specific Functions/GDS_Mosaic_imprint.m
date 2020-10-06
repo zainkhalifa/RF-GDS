@@ -32,11 +32,12 @@ function [ogstr] = GDS_Mosaic_imprint(block_gstr,bbox_block,igstr,bbox_gstr,unit
     inter_Mosaic_dummy = GDS_Discretize_gstr(inter_Mosaic_dummy{1},2500,units);
     
 % replace elements of inter_Mosaic_dummy with block_gstr
-    inter_block_gstr = {};
+    inter_block_gstr = cell(1,length(inter_Mosaic_dummy(:)));
     for idx = 1:length(inter_Mosaic_dummy(:))
+        fprintf("Processing %0.2f\n",100*idx/length(inter_Mosaic_dummy(:)))
         box = bbox(inter_Mosaic_dummy(idx));
         center = [mean([box(1) box(3)])  mean([box(2) box(4)])];
-        inter_block_gstr(1+end) = {GDS_Shift(block_gstr,center)};
+        inter_block_gstr(idx) = {GDS_Shift(block_gstr,center)};
     end
 
 % This will find the imprints of block_gstr on igstr 

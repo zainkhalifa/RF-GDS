@@ -7,17 +7,21 @@ close all
 clc
 
 location = 'IN_OUT/';
-Filling_glib_filename   = 'HRO_BFillings_HFSS';
+Filling_glib_filename   = 'HRO2_Lt0_Filling_HFSS';
+Wallmask_glib_filename   = 'HRO2_Lt0_Fillingmask_HFSS';
 outside_block_filename  = 'z_01210000_5x5_block';
 
-output_filename = 'HRO_BFillings_CAD';
-Cell_name = 'HRO_BFillings';
+output_filename = 'HRO2_Lt0_Filling_CAD';
+Cell_name = 'HRO2_Lt0_Filling';
 
 [Fillings_glib] = read_gds_library(strcat(location,Filling_glib_filename,'.gds'));
+[Wallmask_glib] = read_gds_library(strcat(location,Wallmask_glib_filename,'.gds'));
 [ob_glib] = read_gds_library(strcat(location,outside_block_filename,'.gds'));
 
 Filling_gstr = get(Fillings_glib,'st');
 Filling_gstr = Filling_gstr{1};
+Wallmask_gstr = get(Wallmask_glib,'st');
+Wallmask_gstr = Wallmask_gstr{1};
 OutGrid_gstr = get(ob_glib,'st');
 OutGrid_gstr = OutGrid_gstr{1};
 
@@ -29,10 +33,16 @@ gdsii_units(uunit, dbunit);
 %% Create the output gds library 
 Output_glib = gds_library('z_MATLAB','uunit',uunit, 'dbunit',dbunit);
 
+%% select your elements
+GDS_plot(Filling_gstr,'k-'),hold on
+GDS_plot(Wallmask_gstr,'r-.'),hold on
+
+
+
 %% Discretize to the needed grid > minGrid(for M8) and > minWidth for the rest
 DSt = GDS_Discretize_gstr(Filling_gstr,20,units);
 Filling_maskgelm = DSt(1);
-DSt(1) = [];
+DSt = GDS_Discretize_gstr(Wallmask_gstr,20,units);
 Shield_maskgstr = DSt;
 %% produce the bbox element
 
@@ -45,9 +55,9 @@ Shield_maskgstr = DSt;
     end
     bboxgelm = GDS_Create_box(d,c);
     figure
-    GDS_plot(Shield_maskgstr,'k-')
     GDS_plot(bboxgelm,'b-'),hold on
     GDS_plot(Filling_maskgelm,'r-.')
+
 %% created mosaic of grid wall in the bbox
     Mosaic.b = [5 5];
     Mosaic.d = [0 0];
@@ -57,34 +67,40 @@ Shield_maskgstr = DSt;
     [RC,Center] = GDS_Mosaic_calc(bboxgelm,Mosaic);
     Mosaic_gstr = GDS_Mosaic(block_gelm,Mosaic,RC-1,Center);
     Mosaic_gstr = GDS_combine_gstrcells(Mosaic_gstr);
-    
+
     figure
     GDS_plot(Mosaic_gstr,'k-.'),hold on
     GDS_plot(Filling_maskgelm,'r-')
 %% find the intersecting filling blocks with out/in_mask   
+
     inv_inner_maskgstr = GDS_MATH(bboxgelm,Filling_maskgelm,'diff',units);
-    InOut_Mosaic_gstr = GDS_Mosaic_intersections(inv_inner_maskgstr(1),Mosaic_gstr,units);
+    InOut_Mosaic_gstr = GDS_Mosaic_intersections(inv_inner_maskgstr,Mosaic_gstr,units);
 
     figure
     GDS_plot(InOut_Mosaic_gstr{2},'k-'),hold on
     GDS_plot(Filling_maskgelm,'r-'),hold on
     
-%% get the negative of the Outside_Mosaic_gstr and produce the squary ring mask layer
-    outer_solid_gstr = GDS_Merge(InOut_Mosaic_gstr{1},units*100);
-    outer_solid_gstr = GDS_MATH(bboxgelm,outer_solid_gstr(1),'diff',units);
-    outer_solid_gstr = GDS_Discretize_gstr(outer_solid_gstr,2500,units);
+%% get the negative of the Outside_Mosaic_gstr 
+
+    outer_solid_gstr = GDS_Merge(InOut_Mosaic_gstr{2},units);
+%     outer_solid_gstr = GDS_MATH(bboxgelm,outer_solid_gstr(1),'diff',units);
+    outer_solid_gstr = GDS_Discretize_gstr(outer_solid_gstr{1},2500,units);
     figure
 %     GDS_plot_gstr(InOut_Mosaic_gstr{2},0,'k-'),hold on
-    GDS_plot(outer_solid_gstr,'-')
+    GDS_plot(outer_solid_gstr,'b-'),hold on
+    GDS_plot(Filling_maskgelm,'r-.'),hold on
 
+    
 %%  
+    
     the_diffring_mask = GDS_MATH(Shield_maskgstr,outer_solid_gstr,'diff',units); 
+    
     figure
-    % GDS_plot_gstr(Shield_maskgstr,0,'b-'),hold on
-    % GDS_plot_gelm(outer_solid_gstr(1),'r-.')
-    GDS_plot_gstr(the_diffring_mask,0,'k-'),hold on 
+    GDS_plot(Shield_maskgstr,'b-'),hold on
+    GDS_plot(outer_solid_gstr,'r-.'),hold on
+    GDS_plot(the_diffring_mask,'k-'),hold on 
 
-
+%%
     the_diffring_mask = GDS_Discretize_gstr(the_diffring_mask,500,units);
     the_diffring_mask = GDS_minWidth_gstr(the_diffring_mask,650,400,5000,units);
     
@@ -112,6 +128,7 @@ ogstr = {};
 ogstr(1+end) = {GDS_reset(Splited_St,GDS_ST55("M6_layer"))};
 ogstr(1+end) = {GDS_reset(Splited_St,GDS_ST55("M7_layer"))};
 ogstr(1+end) = {GDS_reset(Splited_St,GDS_ST55("M8_layer"))};
+ogstr = {GDS_combine_gstrcells(ogstr)};
 
 % Store the layers in the Output_glib
 [Output_glib] = add_struct(Output_glib,ogstr);
@@ -130,6 +147,3 @@ end
 %% Export the library as a gds file
 write_gds_library(Output_glib, strcat(location,output_filename,'.gds'));
 %%
-
-
-    

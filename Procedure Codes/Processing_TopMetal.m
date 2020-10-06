@@ -3,9 +3,9 @@ close all
 clc
 
 location = 'IN_OUT/';
-glib_filename = 'HRO_M8_HFSS';
-output_filename = 'HRO_M8_CAD';
-Cell_name = 'HRO_M8';
+glib_filename = 'HRO2_Lt0_M8_HFSS';
+output_filename = 'HRO2_Lt0_M8_CAD';
+Cell_name = 'HRO2_Lt0_M8';
 
 [in_glib] = read_gds_library(strcat(location,glib_filename,'.gds'));
 
@@ -25,9 +25,9 @@ figure,GDS_plot(in_glib(1),'-')
 % GDS_minWidth_gstr does blind correct for miWidth so it needs to be called
 % more than once !
 DSt = GDS_Discretize_gstr(St,20,units);
-WSt = GDS_minWidth_gstr(DSt,700,20,2000,units);
-WSt = GDS_minWidth_gstr(WSt,700,20,2000,units);
-WSt = GDS_minWidth_gstr(WSt,700,20,2000,units);
+WSt = GDS_minWidth_gstr(DSt,600,20,2000,units);
+WSt = GDS_minWidth_gstr(WSt,600,20,2000,units);
+WSt = GDS_minWidth_gstr(WSt,600,20,2000,units);
 
 figure,GDS_plot(WSt,'-')
 
