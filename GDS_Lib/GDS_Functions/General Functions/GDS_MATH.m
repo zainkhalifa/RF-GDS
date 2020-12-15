@@ -56,7 +56,7 @@ function [ogstr] = GDS_MATH(ig1,ig2,operation,units)
                 ogstr(1+end) = gds_element('boundary','xy',XY);
             end
             if any(hf)
-                warning('ZAIN: Hole created !!\n')
+                warning('ZAIN: Hole created !!')
             end
         end
         end

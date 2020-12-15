@@ -5,7 +5,7 @@ function [ogstr] = GDS_Merge(igstr,units)
 % what has not merge. Not to be confused with GDS_Combine !
 % Warning: GDS_Merge will lose your layer and dtype info.
 %
-% Author : Zainulabideen Khalifa            Last Revision : 10/04/2020
+% Author : Zainulabideen Khalifa            Last Revision : 12/14/2020
 %
 % function [ogstr] = GDS_Merge(igstr,units)
 
@@ -20,7 +20,7 @@ function [ogstr] = GDS_Merge(igstr,units)
     ogstr(1) = igstr(1);
     
     control = 0;
-     while(numel(igstr)>0 && control<100)
+     while(numel(igstr)>0 && control<200)
          control = control+1;
          tempgstr= gds_structure('MATLAB');
          for idx = 1:length(igstr(:))
@@ -32,12 +32,11 @@ function [ogstr] = GDS_Merge(igstr,units)
             end
          end
          % re-sort the gelms randomly 
-         tempgstr = tempgstr(randperm(length(tempgstr(:))));
+         IDX = randperm(length(tempgstr(:)));
          igstr = gds_structure('MATLAB');
          for idx = 1:length(tempgstr(:))
-             igstr(idx) = tempgstr{idx};
+             igstr(idx) = tempgstr(IDX(idx));
          end
-%          igstr = tempgstr;%(randperm(length(tempgstr(:))));
      end
      
      if numel(igstr)>0 % couldnt combine them
